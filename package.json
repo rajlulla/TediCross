@@ -8,7 +8,8 @@
     "url": "git+https://github.com/TediCross/TediCross.git"
   },
   "scripts": {
-    "start": "node main.js",
+    "start": "forever start -o out.log main.js",
+    "stop": "forever stop main.js",
     "start:dev": "nodemon --inspect main.js -i data/",
     "lint": "eslint ."
   },

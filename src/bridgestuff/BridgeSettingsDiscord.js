@@ -61,6 +61,13 @@ class BridgeSettingsDiscord {
 		 * @type {Boolean}
 		 */
 		this.crossDeleteOnTelegram = settings.crossDeleteOnTelegram;
+
+		/**
+		 * Whether or not to send the user's name as part of the messages to Telegram
+		 *
+		 * @type {Boolean}
+		 */
+		this.sendChannelNames = settings.sendChannelNames;
 	}
 
 	/**
@@ -94,6 +101,11 @@ class BridgeSettingsDiscord {
 		// Check that crossDeleteOnTelegram is a boolean
 		if (Boolean(settings.crossDeleteOnTelegram) !== settings.crossDeleteOnTelegram) {
 			throw new Error("`settings.crossDeleteOnTelegram` must be a boolean");
+		}
+
+		// Check that sendChannelNames is a boolean
+		if (Boolean(settings.sendChannelNames) !== settings.sendChannelNames) {
+			throw new Error("`settings.sendChannelNames` must be a boolean");
 		}
 	}
 }

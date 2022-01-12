@@ -122,7 +122,7 @@ function setup(logger, dcBot, tgBot, messageMap, bridgeMap, settings, datadirPat
 		}
 
 		// Get info about the sender
-		const senderName = R.compose(
+		let senderName = R.compose(
 			// Make it HTML safe
 			helpers.escapeHTMLSpecialChars,
 			// Add a colon if wanted
@@ -142,6 +142,10 @@ function setup(logger, dcBot, tgBot, messageMap, bridgeMap, settings, datadirPat
 				// Ignore it if this is a telegram-to-discord bridge
 				if (bridge.direction === Bridge.DIRECTION_TELEGRAM_TO_DISCORD) {
 					return;
+				}
+
+				if (bridge.discord.sendChannelNames){
+					senderName = senderName.concat(" from #", message.channel.name)
 				}
 
 				// This is now the latest message for this bridge
